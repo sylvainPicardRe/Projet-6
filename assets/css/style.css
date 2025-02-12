@@ -1,0 +1,84 @@
+@font-face {
+    font-family: 'DM Sans';
+    src: url('fonts/DMSans-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+  
+body {
+    font-family: 'DM Sans', sans-serif;
+}
+
+:root {
+    --primary-color: #D3573C;
+    --secondary-color: #901C1C;
+    --tercary-color: #757575
+}
+
+a {
+    text-decoration: none;
+}
+
+.m-container {
+    margin: 0 10rem;
+}
+
+/* Header */
+.main-header { 
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 3rem;
+}
+
+.header-logo {
+    height: 2.5rem;
+}
+
+.header-title {
+    color: var(--secondary-color);
+}
+
+/* Photographers wrapper  */
+.photographers-wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+}
+
+/* Portrait photographe */
+.photographer-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.photographer-infos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.photographer-infos p {
+    margin: 0;
+}
+
+.photographer-image {
+    width: 10rem;
+    height: 10rem;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.photographer-name {
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.photographer-location {
+    color: var(--secondary-color)
+}
+
+.photographer-price {
+    color: var(--tercary-color);
+}
+
