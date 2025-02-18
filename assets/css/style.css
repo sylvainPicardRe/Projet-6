@@ -4,7 +4,11 @@
     font-weight: normal;
     font-style: normal;
 }
-  
+
+/* * {
+    box-sizing: border-box;
+}
+   */
 body {
     font-family: 'DM Sans', sans-serif;
 }
@@ -132,4 +136,68 @@ a {
     display: flex;
     align-items: center;
     gap: 1rem;
+}
+
+/* Modal */
+.modal-on {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 300vh;
+    width: 100vw;
+    background-color: rgba(255, 255, 255, 0.7);
+    overflow: hidden;
+}
+
+/* Player Modal  */
+
+.player-wrapper {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.player {
+    position: relative;
+}
+
+.close-btn {
+    position: absolute;
+    font-size: 1.5rem;
+    font-weight: bold;  
+    right: -7%;
+    top: 0;
+    
+}
+
+.previous {
+    position: absolute;
+    font-size: 1.5rem;
+    font-weight: bold;
+    left: -7%;
+    top: 50%;
+    
+}
+
+.next {
+    position: absolute;
+    font-size: 1.5rem;
+    font-weight: bold;  
+    right: -7%;
+    top: 50%;
+    
+}
+
+.previous, .next, .close-btn {
+    border: none;
+    background-color: transparent;
+    color: var(--secondary-color);
+    cursor: pointer;
+}
+
+.media-modal {
+    width: 600px; 
+    height: 600px;
+    object-fit: cover;
 }

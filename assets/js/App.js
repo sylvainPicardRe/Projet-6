@@ -40,7 +40,7 @@ class App {
             .filter(media => media.photographerId === pId)
             .map(media => new MediasFactory(media))
             .forEach(media => {
-                const Template = new MediaCard(media)
+                const Template = mediaCardWithPlayer(new MediaCard(media))
                 this.$mediasWrapper.appendChild(
                     Template.createMediaCard()
                 )

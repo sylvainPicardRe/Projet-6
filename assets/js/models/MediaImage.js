@@ -9,4 +9,10 @@ class MediaImage extends Media {
             <img class="media-src" src="/assets/images/medias/${this._image}">
         `
     }
+
+    get mediaModal() {
+        return `
+            <img class="media-modal" src="/assets/images/medias/${this._image}">
+        `
+    }
 }

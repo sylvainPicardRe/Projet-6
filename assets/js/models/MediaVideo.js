@@ -11,4 +11,12 @@ class MediaVideo extends Media {
             </video>
         `
     }
+
+    get mediaModal() {
+        return `
+            <video controls class="media-modal">
+                <source src="/assets/images/medias/${this._video}" type="video/webm" />
+            </video>
+        `
+    }
 }

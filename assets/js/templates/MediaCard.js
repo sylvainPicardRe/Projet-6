@@ -1,12 +1,16 @@
 class MediaCard {
     constructor(media) {
         this._media = media
+
+        this.$wrapper = document.createElement('div')
+        this.$wrapper.classList.add('media-card-wrapper')
+    }
+
+    get media() {
+        return this._media
     }
 
     createMediaCard() {
-        const $wrapper = document.createElement('div')
-        $wrapper.classList.add('media-card-wrapper')
-
         const MediaCard = `
             <div class="media-card">
                 ${this._media.media}
@@ -19,7 +23,7 @@ class MediaCard {
                 </div>
             </div>
         `
-        $wrapper.innerHTML = MediaCard
-        return $wrapper
+        this.$wrapper.innerHTML = MediaCard
+        return this.$wrapper
     }
 }
