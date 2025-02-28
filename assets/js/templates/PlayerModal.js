@@ -2,6 +2,9 @@ class PlayerModal {
     constructor(media) {
         this.media = media
 
+        this.$body = document.querySelector('body')
+        this.$body.style.overflow = "hidden"
+
         this.$wrapper = document.createElement('div')
         this.$wrapper.classList.add('player-wrapper')
 
@@ -12,6 +15,7 @@ class PlayerModal {
         this.$wrapper
             .querySelector('.close-btn')
             .addEventListener('click', () => {
+                this.$body.style.overflow = "initial"
                 this.$modalWrapper.classList.remove('modal-on')
                 this.$wrapper.innerHTML = ""
             })

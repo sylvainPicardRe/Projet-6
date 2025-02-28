@@ -2,7 +2,7 @@
     font-family: 'DM Sans';
     src: url('fonts/DMSans-Regular.ttf') format('truetype');
     font-weight: normal;
-    font-style: normal;
+    font-style: normal  ;
 }
 
 /* * {
@@ -17,7 +17,8 @@ body {
     --primary-color: #D3573C;
     --secondary-color: #901C1C;
     --tercary-color: #757575;
-    --background: #FAFAFA
+    --background: #FAFAFA;
+    --background-form: #DB8876;
 }
 
 a {
@@ -200,4 +201,64 @@ a {
     width: 600px; 
     height: 600px;
     object-fit: cover;
+}
+
+/* contact form */
+.contactForm-wrapper {
+    background-color: var(--background-form);
+    width: max-content;
+    padding: 1rem 1rem;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.contactForm-wrapper h1 {
+    font-weight: initial;
+    margin: auto;
+}
+
+.contactForm-wrapper .close-btn{
+    top: 3% !important;
+    left: 17% !important;
+    right: -65% !important;
+    color: white !important;
+}
+
+.contactForm-wrapper form {
+    display: flex;
+    flex-direction: column;
+}
+
+.contactForm-wrapper label {
+    padding: 0.5rem 0;
+}
+
+.contactForm-wrapper input {
+    padding: 0.7rem 0;
+}
+
+.contactForm-wrapper input, .contactForm-wrapper textarea{
+    width: 20rem;
+}
+
+.contactForm-wrapper .contact-button{
+    margin-left: 0px;
+    margin-top: 1rem;
+
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+}
+
+.error {
+    color: var(--secondary-color);
+    font-weight: bold;
+}
+
+.hidden {
+    display: none;
 }

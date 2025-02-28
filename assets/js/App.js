@@ -45,6 +45,8 @@ class App {
                     Template.createMediaCard()
                 )
             })
+            
+            contactForm(photographer)
 
         } else {
             photographersData
