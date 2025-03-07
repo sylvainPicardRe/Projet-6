@@ -6,6 +6,13 @@ class App {
             this.MediasApi = new MediaApi(this._url)
             this.$photographerWrapper = document.querySelector('.photographer-wrapper')
             this.$mediasWrapper = document.querySelector('.medias-wrapper')
+            this.$infosWrapper = document.querySelector('.infos-wrapper')
+
+            // Like Pub/sub
+            this.LikeSubject = new LikeSubject()
+            this.LikeCounter = new LikeCounter()
+
+            this.LikeSubject.subscribe(this.LikeCounter)
         } else {
             this.$photographersWrapper = document.querySelector('.photographers-wrapper')
             this.MediasApi = null
@@ -20,34 +27,41 @@ class App {
         const photographersData = await this.PhotographersApi.getPhotographers()
         
         if(this.MediasApi) {
-
+            document.querySelector('.likes-count').innerHTML = this.LikeCounter.count
             const url = new URL(window.location.href)
             const params = new URLSearchParams(url.search)
             const pId = parseInt(params.get('pId'))
-
+            
             const photographerData = await this.PhotographersApi.getPhotographerId(pId)
-
+            
             const photographer = new Photographer(photographerData)
-
+            
             const mediasData = await this.MediasApi.getMedias()
-
+            
             const Template = new PhotographerContactCard(photographer)
             this.$photographerWrapper.appendChild(
                 Template.createPhotographerContactCard()
             )
-
+            
+            let likes = 0
             mediasData
             .filter(media => media.photographerId === pId)
             .map(media => new MediasFactory(media))
             .forEach(media => {
-                const Template = mediaCardWithPlayer(new MediaCard(media))
+                // const Template = mediaCardWithPlayer(new MediaCard(media, this.LikeSubject))
+                const Template = new MediaCard(media, this.LikeSubject)
                 this.$mediasWrapper.appendChild(
                     Template.createMediaCard()
                 )
+                likes += media.likes
             })
             
+            this.LikeCounter.count = likes
+            console.log(this.LikeCounter.count)
+            document.querySelector('.price-wapper').innerHTML = `${photographer._price}€/jour`
+            
             contactForm(photographer)
-
+            
         } else {
             photographersData
             .map(photographer => new Photographer(photographer))
@@ -65,5 +79,6 @@ class App {
     }
 }
 
-const app = new App()
-app.main() 
+
+const app = new App();
+app.main();

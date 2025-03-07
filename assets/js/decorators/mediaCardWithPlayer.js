@@ -1,8 +1,8 @@
-function mediaCardWithPlayer(mediaCard) {
-    mediaCard.$wrapper.addEventListener('click', () => {
-        const Player = new PlayerModal(mediaCard.media)
+function mediaCardWithPlayer(element, media) {
+
+    element.querySelector('.media-src').addEventListener('click', () => {
+        console.log('ici')
+        const Player = new PlayerModal(media)
         Player.render()
     })
-    
-    return mediaCard
 }

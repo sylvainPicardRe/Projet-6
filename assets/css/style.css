@@ -262,3 +262,32 @@ a {
 .hidden {
     display: none;
 }
+
+/* like-btn  */
+.like-btn {
+    cursor: pointer;
+}
+
+/* likes-price-wrapper */
+
+.likes-price-wrapper {
+    background-color: var(--background-form);
+    position: fixed;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    padding: 0 1rem;
+    border-radius: 0.5rem 0.5rem 0 0;
+    right: 2rem;
+    bottom: 0;
+}
+
+.likes-count-wrapper{
+    display: flex;
+    align-items: center;
+    gap: 0.2rem;
+}
+
+.likes-count-wrapper p {
+    font-weight: bold;
+}

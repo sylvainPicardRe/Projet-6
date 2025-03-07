@@ -19,6 +19,13 @@
     <main>
         <div class="photographer-wrapper m-container"></div>
         <div class="medias-wrapper m-container"></div>
+        <div class="likes-price-wrapper">
+            <div class="likes-count-wrapper">
+                <p class="likes-count">0</p>
+                <i class="fa-solid fa-heart"></i>
+            </div>
+            <div class="price-wapper"></div>
+        </div>
     </main>
 
     <div class="modal"></div>
@@ -44,6 +51,10 @@
 
     <!-- Api -->
     <script src="../js/api/Api.js"></script>
+
+    <!-- Pub/Sub -->
+     <script src="../js/like/Subject.js"></script>
+     <script src="../js/like/Counter.js"></script>
 
     <!-- Entry point -->
     <script src="../js/App.js"></script>
