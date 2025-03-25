@@ -1,81 +1,77 @@
 class ContactFormModal {
-    constructor(photographer) {
+  constructor(photographer) {
+    this._photographer = photographer
 
-        this._photographer = photographer
+    this.$body = document.querySelector('body')
+    this.$body.style.overflow = 'hidden'
 
-        this.$body = document.querySelector('body')
-        this.$body.style.overflow = "hidden"
+    this.$wrapper = document.createElement('div')
+    this.$wrapper.classList.add('contactForm-wrapper')
 
-        this.$wrapper = document.createElement('div')
-        this.$wrapper.classList.add('contactForm-wrapper')
+    this.$modalWrapper = document.querySelector('.modal')
+  }
 
+  onSubmit() {
+    const firstName = this.$wrapper.querySelector('#first')
+    const lastName = this.$wrapper.querySelector('#last')
+    const email = this.$wrapper.querySelector('#email')
+    const message = this.$wrapper.querySelector('#message')
 
-        this.$modalWrapper = document.querySelector('.modal')
+    this.$wrapper.querySelector('.contact').addEventListener('submit', (e) => {
+      e.preventDefault()
 
-    }
-    
-    onSubmit() {
-        const firstName =  this.$wrapper.querySelector('#first')
-        const lastName =  this.$wrapper.querySelector('#last')
-        const email =  this.$wrapper.querySelector('#email')
-        const message =  this.$wrapper.querySelector('#message')
+      if (firstName.value === '') {
+        firstName.parentElement.lastElementChild.classList.remove('hidden')
+      } else {
+        firstName.parentElement.lastElementChild.classList.add('hidden')
+      }
+      if (lastName.value === '') {
+        lastName.parentElement.lastElementChild.classList.remove('hidden')
+      } else {
+        lastName.parentElement.lastElementChild.classList.add('hidden')
+      }
+      if (email.value === '') {
+        email.parentElement.lastElementChild.classList.remove('hidden')
+      } else {
+        email.parentElement.lastElementChild.classList.add('hidden')
+      }
+      if (message.value === '') {
+        message.parentElement.lastElementChild.classList.remove('hidden')
+      } else {
+        message.parentElement.lastElementChild.classList.add('hidden')
+      }
 
-        this.$wrapper
-            .querySelector('.contact')
-            .addEventListener('submit', (e) => {
-                e.preventDefault()
+      if (
+        (firstName.value !== '' && lastName.value !== '' && email.value !== '',
+        message.value !== '')
+      ) {
+        console.log('Prénom:', firstName.value)
+        console.log('Nom:', lastName.value)
+        console.log('Email:', email.value)
+        console.log('Message:', message.value)
+        this.closeModal()
+      }
+    })
+  }
 
-                if(firstName.value === ''){
-                    firstName.parentElement.lastElementChild.classList.remove('hidden')
-                } else {
-                    firstName.parentElement.lastElementChild.classList.add('hidden')
-                } 
-                if(lastName.value === ''){
-                    lastName.parentElement.lastElementChild.classList.remove('hidden')
-                } else {
-                    lastName.parentElement.lastElementChild.classList.add('hidden')
-                } 
-                if(email.value === '') {
-                    email.parentElement.lastElementChild.classList.remove('hidden')
-                } else {
-                    email.parentElement.lastElementChild.classList.add('hidden')
-                } 
-                if(message.value === ''){
-                    message.parentElement.lastElementChild.classList.remove('hidden')
-                } else {
-                    message.parentElement.lastElementChild.classList.add('hidden')
-                }
+  closeModal() {
+    this.$body.style.overflow = 'initial'
+    this.$modalWrapper.style.display = 'none'
+    this.$wrapper.style.display = 'none'
+    this.$wrapper.innerHTML = ''
+  }
 
-                if(firstName.value !== '' && lastName.value !== '' && email.value !== '', message.value !== ''){
-                    console.log('Prénom:', firstName.value)
-                    console.log('Nom:', lastName.value)
-                    console.log('Email:', email.value)
-                    console.log('Message:', message.value)
-                    this.closeModal()
-                }
-            })
-    }
+  onCloseButton() {
+    this.$wrapper.querySelector('.close-btn').addEventListener('click', () => {
+      this.$body.style.overflow = 'initial'
+      this.$modalWrapper.style.display = 'none'
+      this.$wrapper.style.display = 'none'
+      this.$wrapper.innerHTML = ''
+    })
+  }
 
-    closeModal() {
-        this.$body.style.overflow = "initial"
-        this.$modalWrapper.classList.remove('modal-on')	
-        this.$wrapper.style.display = "none"
-        this.$wrapper.innerHTML = ""
-    }
-
-    onCloseButton() {
-        this.$wrapper
-            .querySelector('.close-btn')
-            .addEventListener('click', () => {
-                this.$body.style.overflow = "initial"
-                this.$modalWrapper.classList.remove('modal-on')	
-                this.$wrapper.style.display = "none"
-                this.$wrapper.innerHTML = ""
-            })
-    }
-
-    createContactForm() {
-        const contactForm = `
+  createContactForm() {
+    const contactForm = `
             <h1>Contactez-moi <br>${this._photographer.name}</h1>
             <button class="close-btn"><i class="fa-solid fa-x"></i></button>
             <form action="#" method="get" class="contact">
@@ -103,16 +99,16 @@ class ContactFormModal {
             </form>
         `
 
-        this.$wrapper.innerHTML = contactForm
+    this.$wrapper.innerHTML = contactForm
 
-        this.$modalWrapper.classList.add('modal-on')
-        this.$modalWrapper.appendChild(this.$wrapper)
+    this.$modalWrapper.style.display = 'block'
+    this.$modalWrapper.appendChild(this.$wrapper)
 
-        this.onCloseButton()
-        this.onSubmit()
-    }
+    this.onCloseButton()
+    this.onSubmit()
+  }
 
-    render() {
-        this.createContactForm()
-    }
+  render() {
+    this.createContactForm()
+  }
 }

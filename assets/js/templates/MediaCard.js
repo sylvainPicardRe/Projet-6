@@ -1,50 +1,53 @@
 class MediaCard {
-    constructor(media, LikeSubject) {
-        this._media = media
-        this.LikeSubject = LikeSubject
+  constructor(media, LikeSubject, index, lightbox) {
+    this._media = media
+    this.LikeSubject = LikeSubject
+    this._index = index
+    this._lightbox = lightbox
 
-        this.$wrapper = document.createElement('div')
-        this.$wrapper.classList.add('media-card-wrapper')
+    this.$wrapper = document.createElement('div')
+    this.$wrapper.classList.add('media-card-wrapper')
 
-        this.$mediaSrc = document.createElement('div')
-        this.$mediaSrc.classList.add('media-src')
-    }
+    this.$mediaSrc = document.createElement('div')
+    this.$mediaSrc.classList.add('media-src')
+  }
 
-    get media() {
-        return this._media
-    }
+  get media() {
+    return this._media
+  }
 
-    handleLikeButton() {
-        const that = this
-        
-        let likesCount = this.$wrapper.querySelector('.likes-count')
-        let likeCountValue = parseInt(this.$wrapper.querySelector('.likes-count').innerHTML)
+  handleLikeButton() {
+    const that = this
 
-        this.$wrapper
-            .querySelector('.like-btn')
-            .addEventListener('click', function() {
-                if(this.classList.contains('fa-solid')) {
-                    this.classList.remove('fa-solid')
-                    this.classList.add('fa-regular')
-                    likeCountValue -= 1
-                    that.LikeSubject.fire('DEC')
-                } else {
-                    this.classList.add('fa-regular')
-                    this.classList.add('fa-solid')
-                    likeCountValue += 1
-                    that.LikeSubject.fire('INC')
-                }
+    let likesCount = this.$wrapper.querySelector('.likes-count')
+    let likeCountValue = parseInt(
+      this.$wrapper.querySelector('.likes-count').innerHTML,
+    )
 
-                likesCount.innerHTML = likeCountValue
-            })
-    }
+    this.$wrapper
+      .querySelector('.like-btn')
+      .addEventListener('click', function () {
+        if (this.classList.contains('fa-solid')) {
+          this.classList.remove('fa-solid')
+          this.classList.add('fa-regular')
+          likeCountValue -= 1
+          that.LikeSubject.fire('DEC')
+        } else {
+          this.classList.add('fa-regular')
+          this.classList.add('fa-solid')
+          likeCountValue += 1
+          that.LikeSubject.fire('INC')
+        }
 
-    createMediaCard() {
+        likesCount.innerHTML = likeCountValue
+      })
+  }
 
-        this.$mediaSrc.innerHTML = this._media.media;
+  createMediaCard() {
+    this.$mediaSrc.innerHTML = this._media.media
 
-        const MediaCard = `
-        <div class="media-card">
+    const MediaCard = `
+        <div class="media-card" data-id=${this._index}>
         ${this.$mediaSrc.outerHTML}
         <div class="media-card-content">
         <h3 class="media-title">${this._media.title}</h3>
@@ -55,10 +58,9 @@ class MediaCard {
         </div>
         </div>
         `
-        
-        this.$wrapper.innerHTML = MediaCard
-        this.handleLikeButton()
-        mediaCardWithPlayer(this.$wrapper, this._media)
-        return this.$wrapper
-    }
+
+    this.$wrapper.innerHTML = MediaCard
+    this.handleLikeButton()
+    return this.$wrapper
+  }
 }

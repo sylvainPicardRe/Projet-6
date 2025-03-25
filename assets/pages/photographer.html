@@ -1,34 +1,45 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- <link rel="icon" type="image/png" href="assets/favicon.png"> -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+    />
 
-    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/style.css" />
 
     <title>FishEye</title>
-</head>
-<body>
+  </head>
+  <body>
     <header class="main-header m-container">
-        <img class="header-logo" src="/assets/images/logo.png" alt="Logo du site FishEye">
+      <img
+        class="header-logo"
+        src="/assets/images/logo.png"
+        alt="Logo du site FishEye"
+      />
     </header>
     <main>
-        <div class="photographer-wrapper m-container"></div>
-        <div class="medias-wrapper m-container"></div>
-        <div class="likes-price-wrapper">
-            <div class="likes-count-wrapper">
-                <p class="likes-count">0</p>
-                <i class="fa-solid fa-heart"></i>
-            </div>
-            <div class="price-wapper"></div>
+      <div class="photographer-wrapper m-container"></div>
+      <div class="sorter-form-wrapper m-container"></div>
+      <div class="medias-wrapper m-container"></div>
+      <div class="likes-price-wrapper">
+        <div class="likes-count-wrapper">
+          <p class="likes-count">0</p>
+          <i class="fa-solid fa-heart"></i>
         </div>
+        <div class="price-wapper"></div>
+      </div>
     </main>
 
-    <div class="modal"></div>
+    <div class="modal modal-off"></div>
+
+    <!-- Lib -->
+    <script src="../lib/sorter/index.js"></script>
 
     <!-- Factories -->
     <script src="../js/factories/MediasFactory.js"></script>
@@ -38,25 +49,30 @@
     <script src="../js/models/Media.js"></script>
     <script src="../js/models/MediaImage.js"></script>
     <script src="../js/models/MediaVideo.js"></script>
-    
+
     <!-- Decorators -->
     <script src="../js/decorators/mediaCardWithPlayer.js"></script>
     <script src="../js/decorators/contactForm.js"></script>
+
+    <!-- Proxy -->
+    <script src="../js/proxy/ProxyRatingSorter.js"></script>
 
     <!-- Templates -->
     <script src="../js/templates/PhotographerContactCard.js"></script>
     <script src="../js/templates/MediaCard.js"></script>
     <script src="../js/templates/PlayerModal.js"></script>
     <script src="../js/templates/ContactFormModal.js"></script>
+    <script src="../js/templates/SorterForm.js"></script>
+    <script src="../js/templates/Lightbox.js"></script>
 
     <!-- Api -->
     <script src="../js/api/Api.js"></script>
 
     <!-- Pub/Sub -->
-     <script src="../js/like/Subject.js"></script>
-     <script src="../js/like/Counter.js"></script>
+    <script src="../js/like/Subject.js"></script>
+    <script src="../js/like/Counter.js"></script>
 
     <!-- Entry point -->
     <script src="../js/App.js"></script>
-</body>
+  </body>
 </html>
