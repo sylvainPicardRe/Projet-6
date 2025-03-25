@@ -14,9 +14,11 @@ class Lightbox {
     const lightbox = document.createElement('div')
     lightbox.classList.add('lightbox-wrapper')
     lightbox.innerHTML = `
-        <button class="lightbox-close">&times;</button>
+        <div class="lightbox-btns">
         <button class="lightbox-prev">&#10094;</button>
+        <button class="lightbox-close">&times;</button>
         <button class="lightbox-next">&#10095;</button>
+        </div>
         <div class="lightbox-content"></div>
       `
     return lightbox

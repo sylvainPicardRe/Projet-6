@@ -8,7 +8,7 @@ class ProxyRatingSorter {
 
     if (cacheResult) {
       console.log('get from cache')
-      return cachedResult
+      return cacheResult
     }
 
     const data = await RatingSorterApi.sorter(medias, orderBy)

@@ -1,14 +1,8 @@
 @font-face {
-  font-family: 'DM Sans';
+  font-family: 'DMSans';
   src: url('fonts/DMSans-Regular.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
 }
 
-/* * {
-    box-sizing: border-box;
-}
-   */
 body {
   font-family: 'DM Sans', sans-serif;
 }
@@ -16,7 +10,7 @@ body {
 :root {
   --primary-color: #d3573c;
   --secondary-color: #901c1c;
-  --tercary-color: #757575;
+  --tercary-color: #525252;
   --background: #fafafa;
   --background-form: #db8876;
 }
@@ -33,15 +27,19 @@ a {
 .main-header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   margin-bottom: 3rem;
+  padding: 2rem 0;
 }
 
 .header-logo {
   height: 2.5rem;
+  width: auto;
 }
 
 .header-title {
   color: var(--secondary-color);
+  margin: 0;
 }
 
 /* Photographers wrapper  */
@@ -123,6 +121,7 @@ a {
   width: 100%;
   height: 300px;
   object-fit: cover;
+  cursor: pointer;
 }
 
 .media-card-content {
@@ -212,10 +211,18 @@ a {
 }
 
 .contactForm-wrapper .close-btn {
-  top: 3% !important;
-  left: 17% !important;
-  right: -65% !important;
+  /* top: 3% !important; */
+  /* left: 17% !important; */
+  /* right: -65% !important; */
+  border: none;
+  background-color: transparent;
+  font-size: 2rem;
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 1rem;
   color: white !important;
+  cursor: pointer;
 }
 
 .contactForm-wrapper form {
@@ -284,23 +291,78 @@ a {
   font-weight: bold;
 }
 
-/* filter */
+/* Sorter */
 .sorter-form-wrapper {
   padding: 2rem 0;
 }
 
-.filter-wrapper label {
+.sorter-form-wrapper label {
   font-weight: bold;
 }
 
-.filter-wrapper .filter-select {
+#sorter-select {
   background-color: var(--secondary-color);
   color: white;
   font-weight: bold;
   border: none;
   padding: 1rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
 }
 
-.filter-wrapper .filter-select option:hover {
-  background-color: #d3573c;
+#sorter-select:hover {
+  cursor: pointer;
+}
+
+/*media queries*/
+@media screen and (max-width: 768px) {
+  .m-container {
+    margin: 0;
+  }
+  .main-header {
+    margin-top: 2rem;
+    justify-content: center;
+    flex-direction: column;
+  }
+  .photographers-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+  .photographer-contact-card {
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+  }
+  .medias-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .lightbox-wrapper {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: center;
+  }
+
+  .lightbox-btns {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .media-modal {
+    width: 400px;
+    height: 400px;
+  }
+
+  .lightbox-prev,
+  .lightbox-next,
+  .lightbox-close {
+    position: initial;
+  }
+}
+
+@media only screen and (min-width: 769px) and (max-width: 1023px) {
+  .m-container {
+    margin: 0;
+  }
 }
