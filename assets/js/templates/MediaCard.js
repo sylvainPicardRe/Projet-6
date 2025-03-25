@@ -2,6 +2,8 @@ class MediaCard {
   constructor(media, LikeSubject, index, lightbox) {
     this._media = media
     this.LikeSubject = LikeSubject
+    console.log(this.LikeSubject)
+
     this._index = index
     this._lightbox = lightbox
 
@@ -18,6 +20,7 @@ class MediaCard {
 
   handleLikeButton() {
     const that = this
+    console.log(that)
 
     let likesCount = this.$wrapper.querySelector('.likes-count')
     let likeCountValue = parseInt(
@@ -43,19 +46,24 @@ class MediaCard {
       })
   }
 
+  getMedia() {
+    const mediaElement = this.$wrapper.querySelector('.media-src')
+    return mediaElement
+  }
+
   createMediaCard() {
     this.$mediaSrc.innerHTML = this._media.media
 
     const MediaCard = `
         <div class="media-card" data-id=${this._index}>
-        ${this.$mediaSrc.outerHTML}
-        <div class="media-card-content">
-        <h3 class="media-title">${this._media.title}</h3>
-        <div class="likes">
-        <p class="likes-count">${this._media.likes}</p>
-        <i class="fa-regular fa-heart like-icon like-btn"></i>
-        </div>
-        </div>
+          ${this.$mediaSrc.outerHTML}
+          <div class="media-card-content">
+            <h3 class="media-title">${this._media.title}</h3>
+            <div class="likes">
+              <p class="likes-count">${this._media.likes}</p>
+              <i class="fa-regular fa-heart like-icon like-btn"></i>
+            </div>
+          </div>
         </div>
         `
 

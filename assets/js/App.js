@@ -45,6 +45,7 @@ class App {
         .filter((media) => media.photographerId === pId)
         .map((media) => new MediasFactory(media))
 
+      // const Sorter = new SorterForm(Medias, this.LikeSubject, this.LikeCounter)
       const Sorter = new SorterForm(Medias)
       Sorter.render()
 
@@ -61,14 +62,13 @@ class App {
         likes += media.likes
 
         // Ouvrir la lightbox au clic sur une image
-        Template.createMediaCard().addEventListener('click', () => {
+        Template.getMedia().addEventListener('click', () => {
           const lightbox = new Lightbox(Medias)
           lightbox.open(index)
         })
       })
 
       this.LikeCounter.count = likes
-      console.log(this.LikeCounter.count)
       document.querySelector('.price-wapper').innerHTML =
         `${photographer._price}€/jour`
 

@@ -1,19 +1,19 @@
 class ProxyRatingSorter {
-    constructor() {
-        this.cache = []
+  constructor() {
+    this.cache = []
+  }
+
+  async sorter(medias, orderBy) {
+    const cacheResult = this.cache.find((elt) => elt.key === orderBy)
+
+    if (cacheResult) {
+      console.log('get from cache')
+      return cachedResult
     }
 
-    async sorter(medias, orderBy) {
-        const cacheResult = this.cache.find(elt => elt.key === orderBy)
+    const data = await RatingSorterApi.sorter(medias, orderBy)
 
-        if(cacheResult) {
-            console.log('get from cache')
-            return cachedResult
-        }
-
-        const data  = await RatingSorterApi.sorter(medias, orderBy)
-
-        this.cache.push(data)
-        return data
-    }
+    this.cache.push(data)
+    return data
+  }
 }
