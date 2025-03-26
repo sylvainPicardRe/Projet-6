@@ -61,7 +61,7 @@ class MediaCard {
             <h2 class="media-title">${this._media.title}</h2>
             <div class="likes">
               <p class="likes-count">${this._media.likes}</p>
-              <i class="fa-regular fa-heart like-icon like-btn" role="button" aria-pressed="false"></i>
+              <i class="fa-regular fa-heart like-icon like-btn" role="button" aria-label="Like" aria-pressed="false"></i>
             </div>
           </div>
         </div>

@@ -57,6 +57,7 @@ class ContactFormModal {
   closeModal() {
     this.$body.style.overflow = 'initial'
     this.$modalWrapper.style.display = 'none'
+    this.$modalWrapper.attributes('aria-hidden', 'true')
     this.$wrapper.style.display = 'none'
     this.$wrapper.innerHTML = ''
   }
@@ -65,6 +66,7 @@ class ContactFormModal {
     this.$wrapper.querySelector('.close-btn').addEventListener('click', () => {
       this.$body.style.overflow = 'initial'
       this.$modalWrapper.style.display = 'none'
+      this.$modalWrapper.attributes('aria-hidden', 'true')
       this.$wrapper.style.display = 'none'
       this.$wrapper.innerHTML = ''
     })
@@ -73,11 +75,11 @@ class ContactFormModal {
   createContactForm() {
     const contactForm = `
             <h1>Contactez-moi <br>${this._photographer.name}</h1>
-            <button class="close-btn"><i class="fa-solid fa-x"></i></button>
+            <button class="close-btn" aria-label="Fermer"><i class="fa-solid fa-x"></i></button>
             <form action="#" method="get" class="contact">
                 <div class="field">
                     <label for="first">Prénom</label>
-                    <input type="text" id="first" aria-label="" aria-required="true"/>
+                    <input type="text" id="first" aria-label="Prénom" aria-required="true"/>
                     <span class="error hidden">Le champ Prénom est requis</span>
                 </div>
                 <div class="field">
@@ -95,13 +97,14 @@ class ContactFormModal {
                     <textarea id="message" rows="5" cols="33" aria-label="Message" aria-required="true"></textarea>
                     <span class="error hidden">Le champ Message est requis</span>
                 </div>
-                <button class="contact-button submit" type="submit">Envoyer</button>
+                <button class="contact-button submit" type="submit" aria-label="Soumettre le formulaire de contact">Envoyer</button>
             </form>
         `
 
     this.$wrapper.innerHTML = contactForm
 
     this.$modalWrapper.style.display = 'block'
+    this.$modalWrapper.setAttribute('aria-hidden', 'false')
     this.$modalWrapper.appendChild(this.$wrapper)
 
     this.onCloseButton()
