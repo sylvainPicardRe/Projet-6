@@ -1,12 +1,15 @@
 class Lightbox {
+  // Le constructeur prend en paramètre un tableau d'objets média à afficher
   constructor(medias) {
-    this.medias = medias
-    this.currentIndex = 0
+    this.medias = medias // Stocke le tableau de médias
+    this.currentIndex = 0 // Initialise l'index du média courant à 0
 
+    //Elements du DOm
     this.$modal = document.querySelector('.modal')
+    this.$lightboxElement = this.createLightboxElement()
+    this.$modal.appendChild(this.$lightboxElement)
 
-    this.lightboxElement = this.createLightboxElement()
-    this.$modal.appendChild(this.lightboxElement)
+    //Ajoute les écouteurs d'événements pour les interactions utilisateur
     this.addEventListeners()
   }
 
@@ -24,48 +27,54 @@ class Lightbox {
     return lightbox
   }
 
+  //Méthode pour ouvrir la lightbox à un index donné
   open(index) {
     this.currentIndex = index
     this.updateMedia()
     this.$modal.style.display = 'block'
   }
 
+  //Méthode pour fermer la lightbox
   close() {
     this.$modal.style.display = 'none'
     this.$modal.style.display = 'none'
     this.$modal.innerHTML = ''
   }
 
+  // Méthode pour afficher le média suivant
   next() {
     this.currentIndex = (this.currentIndex + 1) % this.medias.length
     this.updateMedia()
   }
 
+  // Méthode pour afficher le média précédent
   prev() {
     this.currentIndex =
       (this.currentIndex - 1 + this.medias.length) % this.medias.length
     this.updateMedia()
   }
 
+  // Méthode pour mettre à jour le contenu affiché dans la lightbox
   updateMedia() {
     const media = this.medias[this.currentIndex]
-    const content = this.lightboxElement.querySelector('.lightbox-content')
+    const content = this.$lightboxElement.querySelector('.lightbox-content')
 
-    content.innerHTML = '' // On vide le contenu précédent
+    content.innerHTML = '' // Je vide le contenu précédent
 
     content.innerHTML = `${media.mediaModal}`
   }
 
+  // Méthode pour ajouter les écouteurs d'événements pour les interactions utilisateur
   addEventListeners() {
-    this.lightboxElement
+    this.$lightboxElement
       .querySelector('.lightbox-close')
       .addEventListener('click', () => this.close())
 
-    this.lightboxElement
+    this.$lightboxElement
       .querySelector('.lightbox-next')
       .addEventListener('click', () => this.next())
 
-    this.lightboxElement
+    this.$lightboxElement
       .querySelector('.lightbox-prev')
       .addEventListener('click', () => this.prev())
 
