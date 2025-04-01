@@ -37,7 +37,6 @@ class Lightbox {
   //Méthode pour fermer la lightbox
   close() {
     this.$modal.style.display = 'none'
-    this.$modal.style.display = 'none'
     this.$modal.innerHTML = ''
   }
 
@@ -80,7 +79,6 @@ class Lightbox {
 
     document.addEventListener('keydown', (e) => {
       if (e.key === 'ArrowRight') this.next()
-      if (e.key === 'ArrowRight') console.log('ici')
       if (e.key === 'ArrowLeft') this.prev()
       if (e.key === 'Escape') this.close()
     })

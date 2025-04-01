@@ -87,6 +87,14 @@ class App {
           const lightbox = new Lightbox(Medias)
           lightbox.open(index)
         })
+
+        //Ouvrir la lightbox avec la touche Entrée
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter') {
+            const lightbox = new Lightbox(Medias)
+            lightbox.open(0)
+          }
+        })
       })
 
       this.LikeCounter.count = likes
