@@ -57,7 +57,7 @@ class ContactFormModal {
   closeModal() {
     this.$body.style.overflow = 'initial'
     this.$modalWrapper.style.display = 'none'
-    this.$modalWrapper.attributes('aria-hidden', 'true')
+    this.$modalWrapper.setAttribute('aria-hidden', 'true')
     this.$wrapper.style.display = 'none'
     this.$wrapper.innerHTML = ''
   }
@@ -66,7 +66,7 @@ class ContactFormModal {
     this.$wrapper.querySelector('.close-btn').addEventListener('click', () => {
       this.$body.style.overflow = 'initial'
       this.$modalWrapper.style.display = 'none'
-      this.$modalWrapper.attributes('aria-hidden', 'true')
+      this.$modalWrapper.setAttribute('aria-hidden', 'true')
       this.$wrapper.style.display = 'none'
       this.$wrapper.innerHTML = ''
     })
